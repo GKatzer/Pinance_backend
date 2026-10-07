@@ -1,0 +1,22 @@
+# Abridged capture of GET /stream/BTC%2FUSDT across a 5-minute boundary: 2 ticks before, the prediction event, 3 of the 12 result events, 1 tick after.
+
+event: tick
+data: {"symbol": "BTC/USDT", "ts": 1791018300000, "closed": false, "open": 84641.15, "high": 84641.15, "low": 84641.14, "close": 84641.14, "volume": 0.31162}
+
+event: tick
+data: {"symbol": "BTC/USDT", "ts": 1791018300000, "closed": false, "open": 84641.15, "high": 84641.15, "low": 84641.14, "close": 84641.15, "volume": 0.39327}
+
+event: prediction
+data: {"symbol": "BTC/USDT", "as_of_ts": "2026-10-03T09:00:00+00:00", "close": 84641.15, "model_version": "202610021348-4de49a70", "quantile_model_version": "202610021525-4de49a70", "schema_version": "38b98fc7516d", "feature_count": 93, "predictions": [{"horizon": 1, "target_ts": "2026-10-03T09:05:00+00:00", "r_pred": 9.475300257122229e-06, "price_pred": 84641.95200410996, "r_q10": -0.0003185478442324244, "r_q90": 0.0003679028674548656, "price_q10": 84614.19203806242, "price_q90": 84672.29545068867}, {"horizon": 2, "target_ts": "2026-10-03T09:10:00+00:00", "r_pred": -9.744613547532955e-06, "price_pred": 84640.32520872167, "r_q10": -0.0004717925310245737, "r_q90": 0.0005279319708464034, "price_q10": 84601.22635619169, "price_q90": 84685.84656646929}, "... 10 more horizons omitted ..."]}
+
+event: result
+data: {"as_of_ts": "2026-10-03T08:45:00", "horizon": 3, "target_ts": "2026-10-03T09:00:00", "r_pred": -1.0898127730102512e-06, "price_pred": 84634.36776433472, "price_q10": 84578.76873780029, "price_q90": 84686.9162944677, "actual_r": 7.904269260610472e-05, "actual_price": 84641.15, "hit": false, "model_version": "202610021348-4de49a70"}
+
+event: result
+data: {"as_of_ts": "2026-10-03T08:00:00", "horizon": 12, "target_ts": "2026-10-03T09:00:00", "r_pred": 2.0652110742084416e-05, "price_pred": 84596.45707735946, "price_q10": 84481.17893541274, "price_q90": 84708.47456792966, "actual_r": 0.0005488198679125852, "actual_price": 84641.15, "hit": true, "model_version": "202610021348-4de49a70"}
+
+event: result
+data: {"as_of_ts": "2026-10-03T08:05:00", "horizon": 11, "target_ts": "2026-10-03T09:00:00", "r_pred": -2.166649462356239e-05, "price_pred": 84629.79634910809, "price_q10": 84518.66042464659, "price_q90": 84745.16228787608, "actual_r": 0.0001124811680887898, "actual_price": 84641.15, "hit": false, "model_version": "202610021348-4de49a70"}
+
+event: tick
+data: {"symbol": "BTC/USDT", "ts": 1791018300000, "closed": false, "open": 84641.15, "high": 84641.15, "low": 84641.14, "close": 84641.14, "volume": 0.41861}

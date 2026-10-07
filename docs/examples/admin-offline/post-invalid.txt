@@ -1,0 +1,1 @@
+{"detail":[{"type":"literal_error","loc":["body","kind"],"msg":"Input should be 'point' or 'quantile'","input":"other","ctx":{"expected":"'point' or 'quantile'"}}]} [422]

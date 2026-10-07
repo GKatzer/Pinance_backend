@@ -1,0 +1,46 @@
+{
+    "symbol": "BTC/USDT",
+    "windows": {
+        "all": {
+            "candidate": {
+                "202610030300-democand": {
+                    "n": 4056,
+                    "directional_accuracy": 59.0,
+                    "mae": 94.75,
+                    "rmse": 122.45
+                }
+            },
+            "production": {
+                "202610020300-demoprod": {
+                    "n": 4056,
+                    "directional_accuracy": 58.8,
+                    "mae": 94.31,
+                    "rmse": 121.92
+                },
+                "202610010300-demoprod": {
+                    "n": 4200,
+                    "directional_accuracy": 57.5,
+                    "mae": 80.58,
+                    "rmse": 104.28
+                }
+            },
+            "quantiles": {
+                "production": {
+                    "q-202609270430": {
+                        "n": 8256,
+                        "q10_coverage": 0.2913,
+                        "q90_coverage": 0.7201
+                    }
+                },
+                "candidate": {
+                    "q-202610030430": {
+                        "n": 4056,
+                        "q10_coverage": 0.1891,
+                        "q90_coverage": 0.7751
+                    }
+                }
+            }
+        }
+    },
+    "updated_at": "2026-10-03T08:57:35.681236Z"
+}

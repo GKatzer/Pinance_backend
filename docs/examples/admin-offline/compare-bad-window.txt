@@ -1,0 +1,1 @@
+{"detail":"Invalid window: '3d', expected one of ('1h', '24h', '7d', '30d', 'all')"} [400]

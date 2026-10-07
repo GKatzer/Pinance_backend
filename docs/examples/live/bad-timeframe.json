@@ -1,0 +1,1 @@
+{"detail":[{"type":"string_pattern_mismatch","loc":["query","timeframe"],"msg":"String should match pattern '^(1D|1W|1M|1Y|ALL)$'","input":"2D","ctx":{"pattern":"^(1D|1W|1M|1Y|ALL)$"}}]}

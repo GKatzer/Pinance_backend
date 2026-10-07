@@ -1,0 +1,1 @@
+{"point":[{"candidate_version":"202610030300-democand","production_version":"202610020300-demoprod","decision":"rejected","metric_name":"directional_accuracy","candidate_value":52.1,"production_value":52.6,"threshold":0.3,"n_samples":2946,"train_wall_seconds":312.5,"decided_at":"2026-10-03T03:12:00"}],"quantile":[]}

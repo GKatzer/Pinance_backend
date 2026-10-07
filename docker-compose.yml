@@ -1,0 +1,77 @@
+name: pinance
+
+services:
+  postgres:
+    image: timescale/timescaledb:latest-pg16
+    container_name: pinance-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-pinance}
+      POSTGRES_USER: ${POSTGRES_USER:-pinance}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}
+    shm_size: "256mb"
+    mem_limit: "512m"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-pinance} -d ${POSTGRES_DB:-pinance}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    networks:
+      - internal
+    ports:
+      - "<TAILSCALE_IP>:5432:5432"
+
+  redis:
+    image: redis:7-alpine
+    container_name: pinance-redis
+    restart: unless-stopped
+    command: ["redis-server", "--appendonly", "yes", "--maxmemory", "256mb", "--maxmemory-policy", "allkeys-lru"]
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    networks:
+      - internal
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pinance-api
+    restart: unless-stopped
+    mem_limit: "256m"
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-pinance}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-pinance}
+      REDIS_URL: redis://redis:6379/0
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./app:/app/app
+    ports:
+      - "<TAILSCALE_IP>:8002:8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health').read()"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+    networks:
+      - internal
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  internal:
+    driver: bridge

@@ -1,0 +1,5 @@
+metrics/BTC%2FUSDT/history?metric=accuracy&window=24x -> {"detail":"Invalid duration: '24x'"} [400]
+metrics/BTC%2FUSDT/history?metric=accuracy&window=1h&bucket=2h -> {"detail":"bucket must not be larger than window"} [400]
+metrics/BTC%2FUSDT/history -> {"detail":[{"type":"missing","loc":["query","metric"],"msg":"Field required","input":null}]} [422]
+candles/BTC%2FUSDT/pred_history?horizon=13 -> {"detail":[{"type":"less_than_equal","loc":["query","horizon"],"msg":"Input should be less than or equal to 12","input":"13","ctx":{"le":12}}]} [422]
+metrics/BTC%2FUSDT/errors?bins=0 -> {"detail":[{"type":"greater_than_equal","loc":["query","bins"],"msg":"Input should be greater than or equal to 1","input":"0","ctx":{"ge":1}}]} [422]
